@@ -1,7 +1,15 @@
 
 int Divide(int a, int b)
 {
-    return a / b;
+    try
+    {
+        return a / b;
+    }
+    catch (DivideByZeroException e)
+    {
+        throw new ArgumentException("Denominator cannot be 0", e);
+    }
+
 }
 
 int ReadAndDivide()
@@ -12,5 +20,11 @@ int ReadAndDivide()
     int b = int.Parse(Console.ReadLine()!);
     return Divide(a, b);
 }
-
-Console.WriteLine(ReadAndDivide());
+try
+{
+    Console.WriteLine(ReadAndDivide());
+}
+catch (ArgumentException e)
+{
+    Console.WriteLine(e.Message);
+}
