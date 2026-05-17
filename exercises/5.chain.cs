@@ -3,11 +3,16 @@ int Divide(int a, int b)
 {
     try
     {
+        Console.WriteLine("Division attempted");
         return a / b;
     }
     catch (DivideByZeroException e)
     {
         throw new ArgumentException("Denominator cannot be 0", e);
+    }
+    catch(OverflowException e)
+    {
+        throw new ArgumentException("The number is too large", e); 
     }
 
 }
